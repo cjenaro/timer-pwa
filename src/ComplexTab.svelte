@@ -128,17 +128,47 @@
 
   label.rest {
     flex-direction: row-reverse;
-    justify-content: start;
+    justify-content: flex-end;
     align-items: center;
   }
 
   label.rest input {
+    clip: rect(1px, 1px, 1px, 1px);
+    clip-path: inset(50%);
+    height: 1px;
+    width: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+  }
+
+  label.rest input:checked + .fake-input p {
+    color: var(--secondary);
+    transform: scale(1);
+  }
+
+  .fake-input p {
+    margin: 0;
+    font-size: 48px;
+    transform: scale(0);
+    transition: transform 0.2s ease-in-out;
+  }
+
+  label.rest .fake-input {
+    background-color: var(--main);
     margin-right: 10px;
+    border-radius: 4px;
+    border: 1px solid var(--secondary);
     width: 50px;
     height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .close {
+    font-size: 20px;
     position: absolute;
     top: 0;
     right: 5px;
@@ -161,7 +191,7 @@
   .cicle {
     position: relative;
     background-color: var(--main);
-    padding: 0.5rem;
+    padding: 2rem 1rem 1rem;
     border-radius: 4px;
     color: var(--secondary);
     margin-bottom: 1rem;
@@ -244,8 +274,15 @@
   .small-cicle.work {
     background-color: var(--red);
   }
+
   .small-cicle.rest {
     background-color: var(--blue);
+  }
+
+  form .cicles-bar {
+    position: static;
+    margin: 1rem 0;
+    width: 100%;
   }
 </style>
 
@@ -286,6 +323,9 @@
           bind:checked={cicle.isRest}
           id={`cicle=${cicle.id}-isRest`}
           name={`cicle=${cicle.id}-isRest`} />
+        <div class="fake-input">
+          <p>&check;</p>
+        </div>
       </label>
     </div>
   {/each}
@@ -293,6 +333,15 @@
   <button class="btn" type="button" on:click={addNewCicleInput}>
     Add Cicle
   </button>
+
+  <p>Workout duration: {cicles.reduce((acc, c) => acc + c.duration, 0)}</p>
+  <div class="cicles-bar">
+    {#each cicles as cicle}
+      <div
+        class={cicle.isRest ? 'small-cicle rest' : 'small-cicle work'}
+        style={`flex-basis: ${(cicle.duration * 100) / cicles.reduce((acc, c) => acc + c.duration, 0)}%`} />
+    {/each}
+  </div>
 
   <button class="btn inverse">Save</button>
 </form>
