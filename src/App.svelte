@@ -126,13 +126,19 @@
 
   .cicle .work {
     flex: 1;
+    border-right: 2px solid var(--secondary);
     transition: flex-basis 0.2s ease-in-out;
     background-color: var(--red);
   }
   .cicle .rest {
     flex: 1;
+    border-right: 2px solid var(--secondary);
     transition: flex-basis 0.2s ease-in-out;
     background-color: var(--blue);
+  }
+
+  .cicle:last-of-type .rest {
+    border-right: 0;
   }
 
   button.start {

@@ -273,9 +273,14 @@
   }
 
   .small-cicle {
+    border-right: 2px solid var(--secondary);
     display: flex;
     flex: 1;
     transition: flex-basis 0.2s ease-in-out;
+  }
+
+  .small-cicle:last-of-type {
+    border-right: 0;
   }
 
   .small-cicle.work {
