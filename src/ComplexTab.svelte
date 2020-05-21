@@ -86,9 +86,9 @@
     audio.addEventListener("play", handlePlaying);
     playing = true;
     ciclesLeft = selectedWorkout.cicles.length;
-    seconds = selectedWorkout.cicles[ciclesLeft - 1].duration;
-    isRest = selectedWorkout.cicles[ciclesLeft - 1].isRest;
-    cicleName = selectedWorkout.cicles[ciclesLeft - 1].name;
+    seconds = selectedWorkout.cicles[0].duration;
+    isRest = selectedWorkout.cicles[0].isRest;
+    cicleName = selectedWorkout.cicles[0].name;
     totalTime = seconds;
     interval = setInterval(() => {
       if (ciclesLeft > 0) {
@@ -100,9 +100,15 @@
           seconds = seconds - 1;
         } else {
           ciclesLeft = ciclesLeft - 1;
-          seconds = selectedWorkout.cicles[ciclesLeft - 1].duration;
-          cicleName = selectedWorkout.cicles[ciclesLeft - 1].name;
-          totalTime = seconds;
+          if (ciclesLeft > 0) {
+            seconds =
+              selectedWorkout.cicles[selectedWorkout.cicles.length - ciclesLeft]
+                .duration;
+            cicleName =
+              selectedWorkout.cicles[selectedWorkout.cicles.length - ciclesLeft]
+                .name;
+            totalTime = seconds;
+          }
         }
       } else {
         countMode = false;
