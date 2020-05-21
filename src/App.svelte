@@ -1,6 +1,7 @@
 <script>
   import { fade } from "svelte/transition";
   import TimerView from "./TimerView.svelte";
+  import ComplexTab from "./ComplexTab.svelte";
   let selectedTab = "simple";
   let cicles, restTime, workTime, interval;
   let seconds = 0;
@@ -140,6 +141,7 @@
     border: 1px solid var(--main);
     color: var(--main);
     background-color: transparent;
+    width: 100%;
   }
 </style>
 
@@ -214,6 +216,8 @@
           on:stop={stopCounter}
           on:close={closeCountMode}
           {working}
+          {workTime}
+          {restTime}
           {seconds}
           {cicles} />
       {/if}
@@ -221,7 +225,7 @@
   {/if}
   {#if selectedTab === 'complex'}
     <div in:fade={{ duration: 200 }} class="tab-content">
-      <p>COMPLEX</p>
+      <ComplexTab />
     </div>
   {/if}
 </main>

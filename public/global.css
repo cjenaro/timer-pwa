@@ -22,6 +22,12 @@ body {
     Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
 }
 
+@keyframes offset {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
 a {
   color: rgb(0, 100, 200);
   text-decoration: none;

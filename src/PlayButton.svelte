@@ -10,6 +10,7 @@
 
 <style>
   button {
+    margin-bottom: 0;
     height: 50px;
     width: 50px;
     border-radius: 50%;

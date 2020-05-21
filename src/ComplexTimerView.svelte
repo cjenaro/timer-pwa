@@ -8,9 +8,8 @@
   export let playing;
   export let seconds;
   export let cicles;
-  export let working;
-  export let workTime;
-  export let restTime;
+  export let isRest;
+  export let totalTime;
   let totalCicles;
 
   onMount(() => {
@@ -107,7 +106,7 @@
   }
 </style>
 
-<div class={working ? 'view working' : 'view'}>
+<div class={!isRest ? 'view working' : 'view'}>
   <button class="close" on:click={dispatchClose}>&times;</button>
   <div class="time">
     <svg
@@ -117,8 +116,8 @@
       xmlns="http://www.w3.org/2000/svg">
       <circle
         style={`
-        ${(working && seconds === workTime) || (!working && seconds === restTime) ? 'transition: none;' : ''}
-        stroke-dashoffset: ${playing && (seconds * 773) / (working ? workTime : restTime)};
+        ${seconds === totalTime ? 'transition: none;' : ''}
+        stroke-dashoffset: ${playing && (seconds * 773) / totalTime};
         `}
         cx="135"
         cy="135"
