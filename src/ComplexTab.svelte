@@ -43,21 +43,19 @@
 
   const handleTimerSubmit = e => {
     if (!e.target.name) return;
-    let workoutsToSave = [];
     let newWorkout = {
       name: e.target.name.value,
-      cicles,
+      cicles: cicles.map(c => ({ ...c })),
       duration: cicles.reduce((acc, value) => acc + value.duration, 0)
     };
 
     if (storedWorkouts) {
-      workoutsToSave = [...storedWorkouts, newWorkout];
+      storedWorkouts = [...storedWorkouts, newWorkout];
     } else {
-      workoutsToSave = [newWorkout];
+      storedWorkouts = [newWorkout];
     }
 
-    window.localStorage.setItem("workouts", JSON.stringify(workoutsToSave));
-    storedWorkouts = workoutsToSave;
+    window.localStorage.setItem("workouts", JSON.stringify(storedWorkouts));
   };
 
   const deleteWorkout = name => {
@@ -107,6 +105,9 @@
             cicleName =
               selectedWorkout.cicles[selectedWorkout.cicles.length - ciclesLeft]
                 .name;
+            isRest =
+              selectedWorkout.cicles[selectedWorkout.cicles.length - ciclesLeft]
+                .isRest;
             totalTime = seconds;
           }
         }
