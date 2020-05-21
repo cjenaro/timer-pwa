@@ -7,7 +7,7 @@
   let cicles = [
     { name: "Cicle 1", id: idsCounter, duration: 0, isRest: false }
   ];
-  let totalTime, interval, ciclesLeft;
+  let totalTime, interval, ciclesLeft, cicleName;
   let seconds = 0;
   let isRest = false;
   let playing = false;
@@ -88,6 +88,7 @@
     ciclesLeft = selectedWorkout.cicles.length;
     seconds = selectedWorkout.cicles[ciclesLeft - 1].duration;
     isRest = selectedWorkout.cicles[ciclesLeft - 1].isRest;
+    cicleName = selectedWorkout.cicles[ciclesLeft - 1].name;
     totalTime = seconds;
     interval = setInterval(() => {
       if (ciclesLeft > 0) {
@@ -100,7 +101,7 @@
         } else {
           ciclesLeft = ciclesLeft - 1;
           seconds = selectedWorkout.cicles[ciclesLeft - 1].duration;
-          isRest = selectedWorkout.cicles[ciclesLeft - 1].isRest;
+          cicleName = selectedWorkout.cicles[ciclesLeft - 1].name;
           totalTime = seconds;
         }
       } else {
@@ -379,5 +380,6 @@
     {isRest}
     {totalTime}
     {seconds}
+    {cicleName}
     cicles={ciclesLeft} />
 {/if}

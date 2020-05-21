@@ -8,6 +8,7 @@
   export let playing;
   export let seconds;
   export let cicles;
+  export let cicleName;
   export let isRest;
   export let totalTime;
   let totalCicles;
@@ -128,6 +129,7 @@
 
     <h1>{seconds}</h1>
   </div>
+  <h2>{cicleName}</h2>
   <p>{cicles}/{totalCicles}</p>
   <div class="actions">
     <PlayButton klass={playing ? 'active' : ''} on:click={dispatchStart} />
