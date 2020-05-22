@@ -71,12 +71,8 @@
   main {
     text-align: center;
     position: relative;
-    height: 100%;
+    padding-bottom: 60px;
     padding-top: 30px;
-  }
-
-  h1 {
-    margin-top: 0;
   }
 
   label {
@@ -95,6 +91,10 @@
     display: flex;
     height: 60px;
     align-items: center;
+    position: fixed;
+    z-index: 1;
+    bottom: 0;
+    box-shadow: 0px -5px 10px 5px #0002;
   }
 
   .tab {
@@ -107,10 +107,11 @@
     border: 0;
     padding: 0.7em;
     cursor: pointer;
+    border-radius: 0;
   }
 
   .tab.selected {
-    border-top: 2px solid var(--main);
+    border-bottom: 2px solid var(--main);
     background-color: var(--secondary);
   }
 
@@ -152,13 +153,20 @@
     background-color: transparent;
     width: 100%;
   }
+
+  .app-name {
+    margin-top: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.3qem;
+    font-size: 3em;
+  }
 </style>
 
 <main>
   <audio id="audio">
     <source src="./beep.mp3" />
   </audio>
-  <h1>Cicles</h1>
+  <h1 class="app-name">Cicles</h1>
   <nav class="tabs">
     <button
       on:click={selectTab}

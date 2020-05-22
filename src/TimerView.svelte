@@ -1,7 +1,7 @@
 <script>
   import { onMount } from "svelte";
   import { createEventDispatcher } from "svelte";
-  import { parseMinutes } from "./util/time";
+  import { parseMinutes } from "./utils/time";
   import PlayButton from "./PlayButton.svelte";
   import StopButton from "./StopButton.svelte";
   const dispatch = createEventDispatcher();
@@ -43,6 +43,7 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    z-index: 2;
   }
 
   .view.working {
