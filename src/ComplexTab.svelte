@@ -1,5 +1,6 @@
 <script>
   import { onMount } from "svelte";
+  import { parseMinutes } from "./utils/time";
   import PlayButton from "./PlayButton.svelte";
   import ComplexTimerView from "./ComplexTimerView.svelte";
   let storedWorkouts;
@@ -342,7 +343,9 @@
     Add Cicle
   </button>
 
-  <p>Workout duration: {cicles.reduce((acc, c) => acc + c.duration, 0)}</p>
+  <p>
+    Workout duration: {parseMinutes(cicles.reduce((acc, c) => acc + c.duration, 0))}
+  </p>
   <div class="cicles-bar">
     {#each cicles as cicle}
       <div

@@ -1,6 +1,7 @@
 <script>
   import { onMount } from "svelte";
   import { createEventDispatcher } from "svelte";
+  import { parseMinutes } from "./util/time";
   import PlayButton from "./PlayButton.svelte";
   import StopButton from "./StopButton.svelte";
   const dispatch = createEventDispatcher();
@@ -127,7 +128,7 @@
         stroke-width="30" />
     </svg>
 
-    <h1>{seconds}</h1>
+    <h1>{parseMinutes(seconds)}</h1>
   </div>
   <p>{cicles}/{totalCicles}</p>
   <div class="actions">

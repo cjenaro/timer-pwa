@@ -1,6 +1,7 @@
 <script>
   import { onMount } from "svelte";
   import SecondsTimerView from "./SecondsTimerView.svelte";
+  import { parseMinutes } from "./utils/time";
   import PlayButton from "./PlayButton.svelte";
   let secondsUrl = "";
   let promise,
@@ -237,7 +238,9 @@
   <p>Loading...</p>
 {:then values}
   {#if values}
-    <p>Workout duration: {values.reduce((acc, c) => acc + c.duration, 0)}</p>
+    <p>
+      Workout duration: {parseMinutes(values.reduce((acc, c) => acc + c.duration, 0))}
+    </p>
     <div class="cicles-bar">
       {#each values as cicle}
         <div
@@ -292,7 +295,7 @@
     on:stop={stopCounter}
     on:close={closeCountMode}
     {seconds}
-    totalCicles={cicles.length}
+    totalCicles={selectedWorkout.cicles.length}
     cicle={currentCicle}
     {ciclesLeft} />
 {/if}

@@ -1,5 +1,6 @@
 <script>
   import { createEventDispatcher } from "svelte";
+  import { parseMinutes } from "./utils/time";
   import PlayButton from "./PlayButton.svelte";
   import StopButton from "./StopButton.svelte";
   const dispatch = createEventDispatcher();
@@ -68,10 +69,6 @@
     color: var(--blue);
   }
 
-  .view.working .completed {
-    color: var(--red);
-  }
-
   .completed circle {
     stroke-dasharray: 773;
     stroke-dashoffset: 773px;
@@ -116,7 +113,7 @@
         stroke-width="30" />
     </svg>
 
-    <h1>{seconds}</h1>
+    <h1>{parseMinutes(seconds)}</h1>
   </div>
   <h2>{cicle.name}</h2>
   <p>{ciclesLeft}/{totalCicles}</p>
