@@ -2,6 +2,7 @@
   import { fade } from "svelte/transition";
   import TimerView from "./TimerView.svelte";
   import ComplexTab from "./ComplexTab.svelte";
+  import SecondsTimerTab from "./SecondsTimerTab.svelte";
   let selectedTab = "simple";
   let cicles, restTime, workTime, interval;
   let seconds = 0;
@@ -92,11 +93,14 @@
 
   .tabs {
     display: flex;
+    height: 60px;
     align-items: center;
   }
 
   .tab {
     flex: 1;
+    height: 100%;
+    margin-bottom: 0;
     background-color: #222222;
     transition: background-color 0.2s ease-in-out;
     color: var(--main);
@@ -169,6 +173,12 @@
       class={selectedTab === 'complex' ? 'tab selected' : 'tab'}>
       Complex cicles
     </button>
+    <button
+      on:click={selectTab}
+      data-tab="seconds"
+      class={selectedTab === 'seconds' ? 'tab selected' : 'tab'}>
+      From seconds app
+    </button>
   </nav>
   {#if selectedTab === 'simple'}
     <div in:fade={{ duration: 200 }} class="tab-content">
@@ -232,6 +242,11 @@
   {#if selectedTab === 'complex'}
     <div in:fade={{ duration: 200 }} class="tab-content">
       <ComplexTab />
+    </div>
+  {/if}
+  {#if selectedTab === 'seconds'}
+    <div in:fade={{ duration: 200 }} class="tab-content">
+      <SecondsTimerTab />
     </div>
   {/if}
 </main>

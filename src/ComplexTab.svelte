@@ -63,11 +63,6 @@
     window.localStorage.setItem("workouts", JSON.stringify(storedWorkouts));
   };
 
-  const selectTab = e => {
-    const { tab } = e.target.dataset;
-    selectedTab = tab;
-  };
-
   const closeCountMode = () => {
     countMode = false;
     stopCounter();
