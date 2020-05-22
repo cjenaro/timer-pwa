@@ -104,14 +104,13 @@
     background-color: #222222;
     transition: background-color 0.2s ease-in-out;
     color: var(--main);
-    border-radius: 4px 4px 0 0;
     border: 0;
     padding: 0.7em;
     cursor: pointer;
   }
 
   .tab.selected {
-    box-shadow: 0px -2px 4px #00000022;
+    border-top: 2px solid var(--main);
     background-color: var(--secondary);
   }
 
